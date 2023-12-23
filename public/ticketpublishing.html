@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Carnival Ticket Publishing Form</title>
+  <link rel="stylesheet" type="text/css" href="ticketstyle.css">
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+</head>
+<header>
+  <div class="background-strap">
+    <h1> Our vendors </h1>
+  </div>
+</header>
+  <div class="flip-card-container" id="flip-card-container">
+    <div class="flip-card">
+      <div class="flip-card-inner">
+        <div class="flip-card-front">
+          <h3>alisha</h3>
+          <img src="ven1.jpg" alt="">
+        </div>
+        <div class="flip-card-back">
+          <p>Description of vendor 1</p>
+        </div>
+      </div>
+    </div>
+    <div class="flip-card">
+      <div class="flip-card-inner">
+        <div class="flip-card-front">
+          <h3>mark and jenny</h3>
+          <img src="vennn.jpg" alt="Vendor 2">
+        </div>
+        <div class="flip-card-back">
+           <p>Description of vendor 2</p>
+        </div>
+      </div>
+    </div>
+    <div class="flip-card">
+      <div class="flip-card-inner">
+        <div class="flip-card-front">
+          <h3>riya</h3>
+          <img src="ven33.jpg" alt="Vendor 3">
+        </div>
+        <div class="flip-card-back">
+          <p>Description of vendor 3</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+ 
+  
+
+  
+<body>
+  <h1>Carnival Ticket Publishing Form</h1>
+  <form id="ticket-form">
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name" required>
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" required>
+    <label for="ticket-type">Ticket Type:</label>
+    <select id="ticket-type" name="ticket-type" required onchange="updateTicketRate()">
+      <option value="">Select ticket type</option>
+      <option value="general-admission" data-rate="50">General Admission</option>
+      <option value="vip" data-rate="100">VIP</option>
+      <option value="backstage-pass" data-rate="200">Backstage Pass</option>
+    </select>
+    <label for="quantity">Quantity:</label>
+    <input type="number" id="quantity" name="quantity" min="0" max="15" required>
+    <label for="ticket-rate">Ticket Rate:</label>
+    <input type="number" id="ticket-rate" name="ticket-rate" readonly>
+    <button type="submit" onclick="displaySuccessMessage()" id="btn1">Publish Ticket</button>
+  </form>
+
+  <!-- Bootstrap card to display success message -->
+  <div class="card mt-3" id="success-message" style="display:none;">
+    <div class="card-body">
+      <h5 class="card-title">Ticket Published Successfully!</h5>
+      <p class="card-text">Thank you for choosing our services. Your ticket has been successfully published.</p>
+    </div>
+  </div>
+
+  <!-- Bootstrap card to display the ticket details -->
+  <div class="card mt-3" id="ticket-details" style="display:none;">
+    <div class="card-body">
+      <h5 class="card-title">Ticket Details</h5>
+      <p class="card-text">Name: <span id="output-name"></span></p>
+      <p class="card-text">Email: <span id="output-email"></span></p>
+      <p class="card-text">Ticket Type: <span id="output-ticket-type"></span></p>
+      <p class="card-text">Quantity: <span id="output-quantity"></span></p>
+      <p class="card-text">Ticket Rate: $<span id="output-ticket-rate"></span></p>
+      <p class="card-text">       <span id="ticket-total"> </span></p>
+    </div>
+  </div>
+
+  <!-- Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+
+  <script>
+    const form = document.getElementById('ticket-form');
+    const successMessage = document.getElementById('success-message');
+
+    form.addEventListener('submit', (event) => {
+      event.preventDefault();
+      const name = document.getElementById('name').value;
+      const email = document.getElementById('email').value;
+      const ticketType = document.getElementById('ticket-type').value;
+      const quantity = document.getElementById('quantity').value;
+
+      // Here you would add code to publish the ticket to your website's database
+      // For this example, we'll just display a success message
+
+      successMessage.classList.remove('hidden');
+      form.reset();
+
+      setTimeout(() => {
+        successMessage.classList.add('hidden');
+      }, 3000);
+    });
+    function updateTicketRate() {
+      var ticketTypeSelect = document.getElementById("ticket-type");
+      var ticketRateInput = document.getElementById("ticket-rate");
+      var ticketRate = ticketTypeSelect.options[ticketTypeSelect.selectedIndex].getAttribute("data-rate");
+      ticketRateInput.value = ticketRate;
+      var quantity = document.getElementById("quantity").value;
+      var totalInput = document.getElementById("total");
+      var total = quantity * ticketRate;
+      totalInput.value = total;
+      document.getElementById("ticket-total").style.display = "block";
+    }
+
+    function displaySuccessMessage() {
+      // get the form inputs
+      var name = document.getElementById("name").value;
+      var email = document.getElementById("email").value;
+      var ticketType = document.getElementById("ticket-type").value;
+      var quantity = document.getElementById("quantity").value;
+      var ticketRate = document.getElementById("ticket-rate").value;
+
+      // update the ticket details in the output
+      document.getElementById("output-name").innerHTML = name;
+      document.getElementById("output-email").innerHTML = email;
+      document.getElementById("output-ticket-type").innerHTML = ticketType;
+      document.getElementById("output-quantity").innerHTML = quantity;
+      document.getElementById("output-ticket-rate").innerHTML = ticketRate;
+
+      // show the ticket details card
+      document.getElementById("ticket-details").style.display = "block";
+
+      // show the success message card
+      document.getElementById("success-message").style.display = "block";
+
+      // hide the form
+      document.getElementById("ticket-form").style.display = "none";
+
+      // display the success message in an alert box
+      alert("Ticket Published Successfully!");
+    }
+    </script>
+    
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+$(document).ready(function(){
+  $("#btn1").click(function(){
+    $("#flip-card-container").hide();
+  });
+});
+</script>
+<footer>
+  <div class="background-strap">
+  <h3> Contact us </h3>
+  <h3> Email: info@example.com <br>
+  Phone: 555-555-5555 <br>
+  Address: 123 Main Street, Anytown USA</h3>
+  </div>
+  </footer>
+</body>
+
+</html>

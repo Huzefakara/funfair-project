@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>LOGIN IN THIS PAGE</title>
+	<link rel="stylesheet" type="text/css" href="loginstyle.css">
+</head>
+<header>
+<h1>LOGIN PAGE</h1>
+</header><br><br><br><br><br><br><br>
+<body>
+	<div class="login-container">
+		<form id="login-form" method="post" action="">
+			<h2></h2>
+			<label for="username"></label>
+			<p>Username</p>
+			<input type="text" id="username" name="email" required>
+			<p>Password</p>
+			<label for="password"></label>
+			<input type="password" id="password" name="password" required>
+			<button type="submit" id="submit-btn">Login</button>
+		</form>
+	</div>
+	<!--<div class="login-container">
+		<h2>Login</h2>
+		<form>
+		  <div class="form-group">
+			<label for="username">Username</label>
+			<input type="text" id="username" required>
+		  </div>
+		  <div class="form-group">
+			<label for="password">Password</label>
+			<input type="password" id="password" required>
+		  </div>
+		  <button>Log in</button>
+		</form>
+	  </div>-->
+
+	<script >
+    const form = document.getElementById('login-form');
+
+form.addEventListener('submit', (event) => {
+	event.preventDefault();
+
+	const username = document.getElementById('username').value;
+	const password = document.getElementById('password').value;
+
+	// Perform authentication here
+	// ...
+
+	// Simulate login success
+	alert('Logged in successfully!');
+
+	// Change background color and show success message
+	document.body.style.backgroundColor = '#5cb85c';
+	const successMessage = document.createElement('p');
+	successMessage.classList.add('success');
+	successMessage.textContent = 'Logged in successfully!';
+	form.appendChild(successMessage);
+
+	// Redirect to dashboard page after 2 seconds
+	setTimeout(() => {
+		window.location.href = 'home.html';
+	}, 2000);
+});
+</script><br><br><br><br><br><br>
+	<footer>
+		<div class="background-strap">
+		<h3> Contact us </h3>
+		<h3> Email: info@example.com <br>
+		Phone: 555-555-5555 <br>
+		Address: 123 Main Street, Anytown USA</h3>
+		</div>
+		</footer>
+
+  
+</body>
+</html>

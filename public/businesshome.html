@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Carnival</title>
+    <link rel="stylesheet" type="text/css" href="Bhomestyle.css">
+  </head>
+  <body>
+    <header>
+      <h1>welcome to our business home page </h1>
+      
+      
+    </header>
+
+    <main>
+      <h1>Welcome to Carnival</h1>
+      <p>Carnival is an annual event that brings together people from all walks of life to celebrate life and culture.</p>
+
+      <h2>Become a Vendor</h2>
+      <p>Follow these simple steps to become a vendor at Carnival:</p>
+      <ol>
+        <li>Fill out the registration form below</li>
+        <li>Wait for our team to review your application</li>
+        <li>Upon approval, pay the vendor fee</li>
+        <li>Set up your stall on the day of the event</li>
+      </ol>
+       </main>
+       <main>
+       <h2>Vendor Registration Form</h2>
+        <form id="vendor-form" method="post" action="/business" enctype="multipart/form-data">
+          <div class="form-group">
+            <label for="business-id">Business ID:</label>
+            <input type="text" id="business-id" name="business-id" required readonly>
+          </div>
+         
+          <div class="form-group">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="bname" required>
+          </div>
+  
+          <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="bemail" required>
+          </div>
+
+          <div class="form-group">
+            <label for="phone">Phone:</label>
+            <input type="tel" id="phone" name="bphone" required>
+          </div>
+  
+          <div class="form-group">
+            <label for="address">Address:</label>
+            <textarea id="address" name="baddress" required></textarea>
+          </div>
+  
+          <div class="form-group">
+            <label for="description">Description of Stall:</label>
+            <textarea id="description" name="bdescription" required></textarea>
+          </div>
+
+          <div class="form-group">
+            <label for="photo">Photo of Stall:</label>
+            <input type="file" id="photo" name="file" accept="image/*" required>
+          </div>
+  
+          <button type="submit">Submit</button>
+        </form>
+      </main>
+
+    <footer class="background-strap">
+      <h4><p>&copy; 2023 Carnival. All rights reserved.</p></h4>
+    </footer>
+
+  <!----  <script src="Bhomescript.js"></script>-->
+  </body>
+</html>
